@@ -1,10 +1,10 @@
-# SentinL-Indic: Multi-Task XLS-R for Language ID & Anti-Spoofing
+# VigilAudio: Multi-Task XLS-R for Language ID & Anti-Spoofing
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)
 ![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97%20Transformers-latest-orange.svg)
 
-**SentinL-Indic** is a robust speech processing framework designed to identify regional Indic languages while simultaneously verifying audio authenticity. Built on the **Wav2Vec2-XLS-R-53** backbone, this model implements a "rejection-first" architecture to filter out out-of-distribution (OOD) "spam" and synthetic spoofing attacks.
+**VigilAudio** is a robust speech processing framework designed to identify regional Indic languages while simultaneously verifying audio authenticity. Built on the **Wav2Vec2-XLS-R-53** backbone, this model implements a "rejection-first" architecture to filter out out-of-distribution (OOD) "spam" and synthetic spoofing attacks.
 
 ---
 
