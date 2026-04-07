@@ -8,7 +8,7 @@
 
 ---
 
-## 🚀 Key Features
+## Key Features
 - **Multi-Task Learning (MTL):** Shared encoder with dual-head classification for Language ID and Spoof Detection.
 - **Regional Focus:** Optimized for **Bengali (BN)**, **Nepali (NE)**, and **Assamese (AS)**.
 - **OOD Rejection:** A dedicated 4th class ("Spam") trained on English and Hindi to prevent false positives in production.
@@ -17,7 +17,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Backbone:** `facebook/wav2vec2-large-xlsr-53`
 - **Audio Processing:** Librosa, Torchaudio
 - **Deep Learning:** PyTorch, Hugging Face Transformers
