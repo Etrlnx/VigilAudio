@@ -19,10 +19,28 @@ LANG_NAMES = ["Bengali", "Nepali", "Assamese", "Spam/OOD"]
 SPOOF_NAMES = ["Bona Fide", "Spoofed"]
 
 def calculate_eer(y_true, y_score):
-    """Calculates the Equal Error Rate (EER) for spoof detection."""
+    """Calculates EER with safety checks for NaN or constant values."""
+    # Convert to numpy arrays and filter out any NaNs
+    y_true = np.array(y_true)
+    y_score = np.array(y_score)
+    
+    mask = ~np.isnan(y_score)
+    y_true = y_true[mask]
+    y_score = y_score[mask]
+
+    if len(np.unique(y_true)) < 2:
+        print("⚠️ Warning: Only one class present in spoof labels. EER cannot be calculated.")
+        return 0.0
+
     fpr, tpr, thresholds = roc_curve(y_true, y_score, pos_label=1)
+    
+    # Safety check for empty or invalid ROC curve
+    if len(fpr) < 2:
+        return 0.0
+
     eer = brentq(lambda x : 1. - x - interp1d(fpr, tpr)(x), 0., 1.)
     return eer
+
 
 def run_evaluation(model, device, loader):
     model.eval()

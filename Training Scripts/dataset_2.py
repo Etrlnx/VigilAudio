@@ -13,6 +13,7 @@ class SLPDataset(Dataset):
         """
         Custom Dataset for Multi-Task Learning.
         Returns: waveform, lang_label (0-3), spoof_label (0-1)
+        Now supports .wav and .mp3 files.
         """
         df = pd.read_csv(manifest_file)
         
@@ -25,6 +26,10 @@ class SLPDataset(Dataset):
         self.max_length = max_seconds * target_sr
         self.target_sr = target_sr
         self.split = split
+
+        # Log detected formats to console for demonstration verification
+        extensions = self.df['path'].apply(lambda x: Path(x).suffix.lower()).unique()
+        print(f"[{split.upper()}] Formats detected in manifest: {list(extensions)}")
         
     def __len__(self):
         return len(self.df)
@@ -35,11 +40,11 @@ class SLPDataset(Dataset):
         # 1. Path and Labels
         audio_path = str(DATA_ROOT / row['path'])
         lang_label = row['label']
-        spoof_label = row['spoof'] 
+        spoof_label = row['spoof']
         
-        # 2. Load Audio
+        # 2. Load Audio (Universal Loader)
         try:
-            # We load with mono=True to ensure 1D shape [Samples]
+            # librosa.load automatically handles .mp3 and .wav if FFmpeg is installed
             waveform_np, _ = librosa.load(audio_path, sr=self.target_sr, mono=True)
             waveform = torch.from_numpy(waveform_np)
         except Exception as e:
@@ -112,7 +117,7 @@ if __name__ == "__main__":
                 if 3 in unique_langs:
                     print("✓ SUCCESS: Label 3 (Spam/OOD) is detected in the stream.")
                 
-                print("✓ SUCCESS: All tensors are LongType and ready for CrossEntropyLoss.")
+                print("✓ SUCCESS: All tensors are ready for Multi-Task Learning.")
                 break 
         except Exception as e:
-            print(f"✗ FAILED: {e}")
+            print(f"FAILED: {e}")

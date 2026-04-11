@@ -15,7 +15,7 @@ SAVE_PATH = DATA_ROOT / "best_multitask_model.pt"
 
 # Loss Weighting for Class Imbalance (Bengali vs Assamese/Nepali/Spam)
 # [Bengali, Nepali, Assamese, Spam]
-LANG_WEIGHTS = torch.tensor([1.0, 7.5, 6.6, 12.0])
+LANG_WEIGHTS = torch.tensor([1.0, 1.0, 1.0, 2.0])
 
 def train_one_epoch(model, loader, optimizer, criterion_lang, criterion_spoof, scaler, device):
     model.train()
