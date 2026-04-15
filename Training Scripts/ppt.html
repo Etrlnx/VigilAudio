@@ -1,0 +1,372 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, 
+initial-scale=1.0"> 
+    <title>VigilAudio - Voice Biometrics & Fraud Prevention</title> 
+    <!-- Reveal.js CSS --> 
+    <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min
+.css"> 
+    <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.mi
+n.css"> 
+    <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/bla
+ck.min.css" id="theme"> 
+     
+    <style> 
+        /* Custom Styling for a Cybersecurity / Fintech Theme */ 
+        :root { 
+            --brand-color: #00d2ff; 
+            --brand-accent: #3a7bd5; 
+        } 
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 { 
+            color: var(--brand-color); 
+            text-transform: none; 
+            font-weight: 600; 
+        } 
+        .reveal h1 { font-size: 3.5em; text-shadow: 0 0 20px rgba(0, 
+210, 255, 0.4); } 
+        .reveal p { font-size: 1.2em; line-height: 1.6; } 
+        .reveal .subtitle { color: #cccccc; font-size: 1.5em; 
+font-weight: 300; } 
+        .reveal .highlight { color: var(--brand-color); font-weight: 
+bold; } 
+        .reveal .box { 
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 10px; 
+            padding: 20px; 
+            margin: 15px 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+        } 
+        .reveal table { 
+            width: 100%; 
+            font-size: 0.8em; 
+            border-collapse: collapse; 
+        } 
+        .reveal th { background: rgba(0, 210, 255, 0.1); color: 
+var(--brand-color); } 
+        .reveal td, .reveal th { border: 1px solid rgba(255, 255, 255, 
+0.2); padding: 15px; text-align: center; } 
+        .reveal .text-left { text-align: left; } 
+        .status-yes { color: #4CAF50; font-weight: bold; } 
+        .status-no { color: #F44336; font-weight: bold; } 
+        .status-warn { color: #FFC107; font-weight: bold; } 
+         
+        /* Layout Utilities */ 
+        .flex-container { display: flex; justify-content: 
+space-between; gap: 20px; } 
+        .flex-col { flex: 1; } 
+    </style> 
+</head> 
+<body> 
+    <div class="reveal"> 
+        <div class="slides"> 
+ 
+            <!-- PAGE 1: Title --> 
+            <section> 
+                <h1>VigilAudio</h1> 
+                <p class="subtitle">Next-Generation Voice Biometrics & 
+Fraud Prevention</p> 
+                <hr style="border-color: var(--brand-accent); width: 
+50%; margin: 30px auto;"> 
+                <p>Securing Regional Voice Authentication 
+against<br>Deepfakes and Replay Attacks.</p> 
+                <p style="font-size: 0.8em; margin-top: 40px; color: 
+#888;">A Multi-Task Learning Architecture for Secure Telebanking</p> 
+            </section> 
+ 
+            <!-- PAGE 2: Core Problem --> 
+            <section> 
+                <h2>The Core Problem: Identity Spoofing</h2> 
+                <p>Financial institutions rely on voice 
+authentication, but standard biometric models fail when targeted by 
+physical-access replay attacks and AI deepfakes.</p> 
+                 
+                <div class="box text-left"> 
+                    <p><span class="highlight">The Attack:</span> A 
+fraudster records a customer's voice or generates an AI clone, playing 
+it through a phone speaker into a banking IVR system.</p> 
+                </div> 
+                 
+                <div class="box text-left"> 
+                    <p><span class="highlight">The Blindspot:</span> 
+Standard biometrics authenticate the *voiceprint* but cannot verify 
+the *liveness* of the audio, allowing distorted, pre-recorded audio to 
+bypass security.</p> 
+                </div> 
+            </section> 
+ 
+            <!-- PAGE 3: The Silo Gap --> 
+            <section> 
+                <h2>The "Silo" Gap in Voice Security</h2> 
+                <div class="flex-container"> 
+                    <div class="flex-col box"> 
+                        <h4 style="color: #fff;">The Biometrics 
+Approach</h4> 
+                        <p style="font-size: 0.8em;">Identity systems 
+focus entirely on voiceprint matching. They assume the incoming audio 
+is from a live human, making them highly vulnerable to synthetic 
+injections.</p> 
+                    </div> 
+                    <div class="flex-col box"> 
+                        <h4 style="color: #fff;">The Cybersecurity 
+Approach</h4> 
+                        <p style="font-size: 0.8em;">Security teams 
+build "gatekeepers" (PAD) to catch hackers based purely on microphone 
+static, ignoring the regional linguistic context of the user.</p> 
+                    </div> 
+                </div> 
+                <div class="box" style="border-color: 
+var(--brand-color);"> 
+                    <p style="margin: 0;"><strong>VigilAudio's 
+Solution:</strong> Bridging the gap with a unified architecture that 
+simultaneously verifies <em>who</em> is speaking (Identity/Language) 
+and <em>how</em> they are speaking (Biometric Liveness).</p> 
+                </div> 
+            </section> 
+ 
+            <!-- PAGE 4: Engineering Objectives --> 
+            <section> 
+                <h2>Engineering Objectives</h2> 
+                <div class="flex-container"> 
+                    <div class="flex-col box"> 
+                        <h4>1. Liveness Detection</h4> 
+                        <p style="font-size: 0.75em;">Detect 
+physical-access replay attacks mathematically. Train the system to 
+recognize the acoustic artifacts of device speakers and room 
+reverberation.</p> 
+                    </div> 
+                    <div class="flex-col box"> 
+                        <h4>2. Regional Validation</h4> 
+                        <p style="font-size: 0.75em;">Authenticate 
+closely related, low-resource regional languages (Bengali, Nepali, 
+Assamese) acting as an initial layer of identity verification.</p> 
+                    </div> 
+                    <div class="flex-col box"> 
+                        <h4>3. Fraud Rejection</h4> 
+                        <p style="font-size: 0.75em;">Implement 
+Out-of-Domain (OOD) rejection to automatically drop automated bots, AI 
+voice generators, or non-target linguistic spam.</p> 
+                    </div> 
+                </div> 
+            </section> 
+ 
+            <!-- PAGE 5: Robust Data Pipeline --> 
+            <section> 
+                <h2>The Secure Data Pipeline</h2> 
+                <p>Building a robust defense requires diverse, 
+high-quality training data.</p> 
+                <div style="display: grid; grid-template-columns: 1fr 
+1fr; gap: 20px; text-align: left; margin-top: 30px;"> 
+                    <div> 
+                        <h4 style="font-size: 1.2em;">Data 
+Extraction</h4> 
+                        <p style="font-size: 0.8em;">Curated 50,000+ 
+raw audio files acting as clean, "live" human baselines.</p> 
+                    </div> 
+                    <div> 
+                        <h4 style="font-size: 
+1.2em;">Standardization</h4> 
+                        <p style="font-size: 0.8em;">Strict pipeline 
+converting all audio to mono, 16kHz, with normalized amplitude for 
+consistent security scanning.</p> 
+                    </div> 
+                    <div> 
+                        <h4 style="font-size: 1.2em;">Tensor 
+Shaping</h4> 
+                        <p style="font-size: 0.8em;">Variable-length 
+audio transformed into uniform 4-second PyTorch tensors for rapid 
+inference.</p> 
+                    </div> 
+                    <div> 
+                        <h4 style="font-size: 1.2em;">Dual Target 
+Labeling</h4> 
+                        <p style="font-size: 0.8em;">Manifests mapped 
+with both linguistic identity and spoof-class targets for multi-task 
+biometric training.</p> 
+                    </div> 
+                </div> 
+            </section> 
+ 
+            <!-- PAGE 6: Spoofing Simulation --> 
+            <section> 
+                <h2>Simulating Physical Attacks</h2> 
+                <p>To catch fraudsters, we mathematically simulated 
+their attack vectors.</p> 
+                <div class="box text-left"> 
+                    <p><strong>Device Limits:</strong> Applied a 
+300Hz-3400Hz Bandpass filter to replicate the hardware limitations of 
+a cheap phone speaker playing a stolen voice memo.</p> 
+                </div> 
+                <div class="box text-left"> 
+                    <p><strong>Room Acoustics:</strong> Applied 
+Synthetic Room Impulse Response (RIR) with exponential decay to 
+simulate a fraudster playing audio in a physical room.</p> 
+                </div> 
+                <div class="box text-left"> 
+                    <p><strong>Sensor Noise:</strong> Injected 
+Additive White Gaussian Noise (AWGN) to replicate the static hum of 
+hijacked recording microphones.</p> 
+                </div> 
+            </section> 
+ 
+            <!-- PAGE 7: Handling Data Imbalance --> 
+            <section> 
+                <h2>Handling Fraud Data Imbalance</h2> 
+                <p>In the real world, fraudulent audio is a minority 
+class compared to legitimate traffic.</p> 
+                <ul style="font-size: 0.9em; margin-bottom: 30px;"> 
+                    <li>Legitimate Bengali: 21,000 files</li> 
+                    <li>Legitimate Nepali: 5,000 files</li> 
+                    <li><span style="color: #F44336;">Fraud/Spam 
+Injection: 3,700 files</span></li> 
+                </ul> 
+                <div class="box" style="border-left: 5px solid 
+var(--brand-color);"> 
+                    <p style="margin: 0; font-size: 
+0.9em;"><strong>The Solution:</strong> Instead of simple data 
+duplication (which causes overfitting), we utilize a <em>Weighted 
+Cross-Entropy Loss Function</em>. The neural network is penalized up 
+to 12x more for failing to catch a spoofing attack, forcing 
+mathematical vigilance.</p> 
+                </div> 
+            </section> 
+ 
+            <!-- PAGE 8: MTL Architecture --> 
+            <section> 
+                <h2>Multi-Task Learning Architecture</h2> 
+                 
+                <h4 style="font-size: 1.2em; text-align: left;">Shared 
+Acoustic Extraction</h4> 
+                <p style="font-size: 0.8em; text-align: left;">We use 
+a frozen Wav2Vec2-Large-XLSR-53 feature extractor to analyze 
+foundational acoustics while minimizing server compute costs during 
+inference.</p> 
+                 
+                <h4 style="font-size: 1.2em; text-align: left;">Mean 
+Pooling Strategy</h4> 
+                <p style="font-size: 0.8em; text-align: left;">Instead 
+of analyzing single syllables, we implemented masked mean pooling 
+across the full 4-second sequence to reliably detect persistent 
+background spoofing static.</p> 
+                 
+                <h4 style="font-size: 1.2em; text-align: left;">The 
+Dual Security Heads</h4> 
+                <p style="font-size: 0.8em; text-align: left;">The 
+network splits into two simultaneous sequences: an <strong>Identity 
+Head</strong> (Validating Language) and a <strong>Biometric 
+Head</strong> (Validating Liveness).</p> 
+            </section> 
+ 
+            <!-- PAGE 9: Production Metrics --> 
+            <section> 
+                <h2>Production Security Metrics</h2> 
+                <h1 style="font-size: 2.5em; margin: 10px 0;">EER</h1> 
+                <p class="subtitle">Equal Error Rate</p> 
+                <div class="box text-left" style="font-size: 0.85em;"> 
+                    <p>In biometric security, simple accuracy is a 
+flawed metric. We utilize the industry gold standard for Presentation 
+Attack Detection (PAD): the Equal Error Rate.</p> 
+                    <p>Using ROC curve interpolation, we calculate the 
+exact threshold where the <strong>False Acceptance Rate</strong> 
+(letting a fraudster's spoofed attack pass) perfectly equals the 
+<strong>False Rejection Rate</strong> (frustrating and blocking a real 
+customer).</p> 
+                    <p class="highlight" style="text-align: center; 
+font-size: 1.2em; margin-top: 20px;">A lower EER denotes a stronger 
+defense against fraud.</p> 
+                </div> 
+            </section> 
+ 
+            <!-- PAGE 10: System Comparison --> 
+            <section> 
+                <h2>System Capabilities Comparison</h2> 
+                <table> 
+                    <thead> 
+                        <tr> 
+                            <th class="text-left">Capability</th> 
+                            <th>Standard Biometric Model</th> 
+                            <th>Cascaded Pipeline (Separate 
+Models)</th> 
+                            <th>VigilAudio (MTL)</th> 
+                        </tr> 
+                    </thead> 
+                    <tbody> 
+                        <tr> 
+                            <td class="text-left">Regional Identity 
+Validation</td> 
+                            <td class="status-yes">[ HIGH ]</td> 
+                            <td class="status-yes">[ HIGH ]</td> 
+                            <td class="status-yes">[ HIGH ]</td> 
+                        </tr> 
+                        <tr> 
+                            <td class="text-left">Replay / Deepfake 
+Defense</td> 
+                            <td class="status-no">[ FAILS ]</td> 
+                            <td class="status-yes">[ YES ]</td> 
+                            <td class="status-yes">[ YES ]</td> 
+                        </tr> 
+                        <tr> 
+                            <td class="text-left">Inference Speed</td> 
+                            <td class="status-yes">[ FAST ]</td> 
+                            <td class="status-no">[ SLOW ]</td> 
+                            <td class="status-yes">[ FAST ]</td> 
+                        </tr> 
+                        <tr> 
+                            <td class="text-left">Fraud/Spam 
+Rejection</td> 
+                            <td class="status-warn">[ FORCES GUESS 
+]</td> 
+                            <td class="status-warn">[ VARIES ]</td> 
+                            <td class="status-yes">[ NATIVE CLASS 
+]</td> 
+                        </tr> 
+                    </tbody> 
+                </table> 
+            </section> 
+ 
+            <!-- PAGE 11: Real-World Impact --> 
+            <section> 
+                <h2>Real-World Impact</h2> 
+                <p>VigilAudio provides a single-pass, highly secure 
+architecture ready for deployment in modern voice banking and 
+telecommunications.</p> 
+                <div class="box" style="background: rgba(0, 210, 255, 
+0.1); border-color: var(--brand-color);"> 
+                    <p style="margin: 0; font-size: 1.1em;">By merging 
+linguistic identity verification with acoustic liveness detection, we 
+eliminate the vulnerability of deepfakes and replay attacks in 
+regional voice networks.</p> 
+                </div> 
+            </section> 
+ 
+            <!-- PAGE 12: End --> 
+            <section> 
+                <h1 style="font-size: 4em;">Thank You</h1> 
+                <p style="margin-top: 40px; color: #888;">Opening the 
+floor for questions.</p> 
+            </section> 
+ 
+        </div> 
+    </div> 
+ 
+    <!-- Reveal.js Initialization --> 
+    <script 
+src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min
+.js"></script> 
+    <script> 
+        Reveal.initialize({ 
+            hash: true, 
+            transition: 'slide', 
+            backgroundTransition: 'fade', 
+            controls: true, 
+            progress: true, 
+            center: true, 
+        }); 
+    </script> 
+</body> 
+</html>
